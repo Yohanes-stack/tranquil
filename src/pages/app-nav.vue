@@ -4,36 +4,77 @@
       <a-col :span="6">
         <!-- 左侧导航内容 -->
         <div class="nav-left">
-          <img
-              src="https://imgproxy-us-east-2-new.icons8.com/oT-MyLMTqQUutSKfLI2VOdJG-WcKucoJJ1DY3i7QEsg/rs:fit:368:368/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMTgx/LzNkZjQ1Y2VhLTY5/MTEtNDViMS05NTEw/LTYyZTk2NDRmYWRl/YS5wbmc.png/download?filename=biro-blue-camera-with-flash-on-orange-strap-1.png"
-              alt="logo"
-              style="width:30px;height:30px;border-radius：50%;">
+
+          <a-avatar src="logo2.png" :size="32"/>
+
         </div>
       </a-col>
-      <a-col :span="8">
+      <a-col :span="6"></a-col>
+      <a-col :span="4">
         <!-- 中间导航内容 -->
         <div class="nav-center">
-          <a-input-search v-model:value="value" placeholder="input search loading deault" loading />
+          <!--          <a-input-search v-model:value="value" placeholder="input search loading deault" class="nav-search"/>-->
 
         </div>
       </a-col>
-      <a-col :span="6">
+      <a-col :span="1"></a-col>
+      <a-col :span="4">
         <!-- 右侧导航内容 -->
-        <div class="nav-right">
+        <div class="nav-right flex-container">
+          <div class="flex-item" style="height:100%;flex:1;">
+            <Badge :count="notificationCount" style="display:block;margin-top:6px;width:2.5em;">
+              <BellOutlined style="font-size: 24px;"/>
+            </Badge>
+          </div>
+          <!--            <button @click="increaseCount">增加通知数量</button>-->
 
 
-          <img
-              src="https://imgproxy-us-east-2-new.icons8.com/oT-MyLMTqQUutSKfLI2VOdJG-WcKucoJJ1DY3i7QEsg/rs:fit:368:368/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMTgx/LzNkZjQ1Y2VhLTY5/MTEtNDViMS05NTEw/LTYyZTk2NDRmYWRl/YS5wbmc.png/download?filename=biro-blue-camera-with-flash-on-orange-strap-1.png"
-              alt="logo"
-              style="width:30px;height:30px;border-radius：50%;">
+          <div  class="flex-item" style="height:100%;flex:1;">
+            <div class="flame-icon">
+              <Badge :count="heatCount"  style="display:block;margin-top:6px;width:2.5em;">
+                <FireOutlined style="font-size:24px"/>
+              </Badge>
+            </div>
+          </div>
+
+          <div  class="flex-item" style="height:100%;flex:3;">
+          <a-avatar src="https://avatars.githubusercontent.com/u/76607191?v=4" :size="32"
+                    style="box-shadow: 0px 0px 5px rgba(0, 0, 0, 1);"/>
+          </div>
+
         </div>
       </a-col>
     </a-row>
   </div>
 </template>
 <script>
+import {ref} from 'vue';
+import {Badge} from 'ant-design-vue';
+import {BellOutlined} from '@ant-design/icons-vue';
+import { faFire } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+export default {
+  components: {
+    Badge,
+    BellOutlined,
+    FontAwesomeIcon
+  },
+  setup() {
+    const notificationCount = ref(0);
 
+    const increaseCount = () => {
+      notificationCount.value += 1;
+    };
 
+    return {
+      //铃铛数量
+      notificationCount: 99,
+      //热度数量
+      heatCount: 0,
+      increaseCount
+    };
+  }
+};
 </script>
 <style>
 .navbar {
@@ -42,11 +83,26 @@
   height: 100%;
 }
 
+.ant-input-search {
+  border-radius: 45px !important;
+}
+
 .nav-left,
 .nav-center,
 .nav-right {
   padding-top: 8px;
   height: 100%;
+}
+
+
+.flex-container {
+  display: flex; /* 使用 Flexbox 布局 */
+}
+
+.flex-item {
+  /*flex: 1; !* 均分空间，使三个 div 元素平均宽度 *!*/
+  /*border: 1px solid #ccc;*/
+  box-sizing: border-box;
 }
 
 .nav-left {

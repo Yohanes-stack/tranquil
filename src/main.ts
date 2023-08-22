@@ -18,4 +18,17 @@ import "~/mock/index.js"
 // 引入ant
 import 'ant-design-vue/dist/antd.css';
 
-createApp(App).use(router).use(pinia).mount('#app')
+// 导入组件库
+import * as antIcon from '@ant-design/icons-vue'
+
+const app = createApp(App);
+
+// 注册组件
+Object.keys(antIcon).forEach(key => {
+    app.component(key, antIcon[key])
+});
+
+// 添加到全局
+app.config.globalProperties.$antIcons = antIcon;
+
+app.use(router).use(pinia).mount('#app');
