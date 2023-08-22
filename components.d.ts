@@ -7,7 +7,25 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    AAvatar: typeof import('ant-design-vue/es')['Avatar']
     AButton: typeof import('ant-design-vue/es')['Button']
+    ACard: typeof import('ant-design-vue/es')['Card']
+    ACardMeta: typeof import('ant-design-vue/es')['CardMeta']
+    ACol: typeof import('ant-design-vue/es')['Col']
+    ADescriptions: typeof import('ant-design-vue/es')['Descriptions']
+    ADescriptionsItem: typeof import('ant-design-vue/es')['DescriptionsItem']
+    AInputSearch: typeof import('ant-design-vue/es')['InputSearch']
+    ALayout: typeof import('ant-design-vue/es')['Layout']
+    ALayoutContent: typeof import('ant-design-vue/es')['LayoutContent']
+    ALayoutFooter: typeof import('ant-design-vue/es')['LayoutFooter']
+    ALayoutHeader: typeof import('ant-design-vue/es')['LayoutHeader']
+    ALayoutSider: typeof import('ant-design-vue/es')['LayoutSider']
+    APageHeader: typeof import('ant-design-vue/es')['PageHeader']
+    APagination: typeof import('ant-design-vue/es')['Pagination']
+    ARow: typeof import('ant-design-vue/es')['Row']
+    ASpace: typeof import('ant-design-vue/es')['Space']
+    ATag: typeof import('ant-design-vue/es')['Tag']
+    ATooltip: typeof import('ant-design-vue/es')['Tooltip']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

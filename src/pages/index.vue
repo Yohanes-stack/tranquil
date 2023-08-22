@@ -1,23 +1,79 @@
 <template>
-  <div>
-    <a-button type="primary">测试成功</a-button>
+  <div class="layout">
+    <!-- Header -->
+    <a-header class="header">        <appNav/> </a-header>
+
+    <!-- Content -->
+    <a-layout class="layout-content">
+      <!-- Sider (Left) -->
+      <a-layout-sider class="sider" :width="170"></a-layout-sider>
+
+      <!-- Content Area -->
+      <a-layout class="content">
+        <app-main/>
+      </a-layout>
+
+      <!-- Sider (Right) -->
+      <a-layout-sider class="sider" :width="200"></a-layout-sider>
+    </a-layout>
+
+    <!-- Footer -->
+    <a-footer class="footer">Footer</a-footer>
   </div>
-  <div>{{  tableData }}</div>
 </template>
 
-<script setup lang="ts">
-import { ref,onMounted } from 'vue'
-import { itemPost } from '~/services/query'
 
-const tableData=ref([])
-onMounted(() => {
-  itemPost().then(res=>{
-    tableData.value=res.data.data
-    console.log(res.data.data);
-  })
-})
+<script>
+import appNav from "./app-nav.vue";
+import appMain from "./app-main.vue";
+
+
+export default {
+  name: 'App',
+  components: {
+    appNav,
+    appMain
+  }
+}
 </script>
 
-<style scoped>
 
+<style>
+.layout {
+  min-height: 100vh;
+}
+
+.layout .header {
+  display: block;
+  height: 50px; /* 将 Header 高度设置为 60px */
+  background-color: #001529;
+  color: #fff;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.layout-content {
+  display: flex;
+  flex: 1;
+}
+
+.sider {
+  background-color: #f0f2f5;
+  padding: 20px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  height: 80%;
+}
+
+.footer {
+  background-color: #001529;
+  color: #fff;
+  text-align: center;
+  height: 100px; /* 设置底部高度为 100px */
+  line-height: 100px;
+}
 </style>
