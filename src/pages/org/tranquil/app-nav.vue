@@ -21,16 +21,16 @@
       <a-col :span="4">
         <!-- 右侧导航内容 -->
         <div class="nav-right flex-container">
-          <div class="flex-item" style="height:100%;flex:1;">
+          <div class="flex-item" style="height:100%;flex:1;cursor:pointer;">
             <Badge :count="notificationCount" style="display:block;margin-top:6px;width:2.5em;">
-              <BellOutlined style="font-size: 24px;"/>
+              <BellOutlined style="font-size: 24px;cursor:pointer;"/>
             </Badge>
           </div>
           <!--            <button @click="increaseCount">增加通知数量</button>-->
 
 
           <div  class="flex-item" style="height:100%;flex:1;">
-            <div class="flame-icon">
+            <div class="flame-icon" style="cursor:pointer;">
               <Badge :count="heatCount"  style="display:block;margin-top:6px;width:2.5em;">
                 <FireOutlined style="font-size:24px"/>
               </Badge>
@@ -39,11 +39,17 @@
 
           <div  class="flex-item" style="height:100%;flex:3;">
           <a-avatar src="https://avatars.githubusercontent.com/u/76607191?v=4" :size="32"
-                    style="box-shadow: 0px 0px 5px rgba(0, 0, 0, 1);"/>
+                    style="box-shadow: 0px 0px 5px rgba(0, 0, 0, 1);cursor:pointer;" @click="showDrawer" />
+            <stateDrawer
+                :visible="visible"
+                :showDrawer="showDrawer"
+                :afterVisibleChange="afterVisibleChange">
+            </stateDrawer>
           </div>
 
         </div>
       </a-col>
+
     </a-row>
   </div>
 </template>
@@ -53,13 +59,26 @@ import {Badge} from 'ant-design-vue';
 import {BellOutlined} from '@ant-design/icons-vue';
 import { faFire } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import stateDrawer from './state-drawer.vue';
+
 export default {
   components: {
     Badge,
     BellOutlined,
-    FontAwesomeIcon
+    FontAwesomeIcon,
+    stateDrawer
   },
   setup() {
+
+    const visible = ref(false);
+    const afterVisibleChange = bool => {
+      console.log('visible', bool);
+    };
+    const showDrawer = () => {
+      visible.value = !visible.value;
+    };
+
+
     const notificationCount = ref(0);
 
     const increaseCount = () => {
@@ -71,7 +90,10 @@ export default {
       notificationCount: 99,
       //热度数量
       heatCount: 0,
-      increaseCount
+      increaseCount,
+      visible,
+      afterVisibleChange,
+      showDrawer,
     };
   }
 };

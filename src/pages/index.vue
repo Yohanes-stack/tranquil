@@ -1,7 +1,9 @@
 <template>
   <div class="layout">
     <!-- Header -->
-    <a-header class="header">        <appNav/> </a-header>
+    <a-header class="header">
+      <appNav/>
+    </a-header>
 
     <!-- Content -->
     <a-layout class="layout-content">
@@ -10,6 +12,9 @@
 
       <!-- Content Area -->
       <a-layout class="content">
+
+        <component :is="currentComponent"/>
+
         <app-main/>
       </a-layout>
 
@@ -18,23 +23,33 @@
     </a-layout>
 
     <!-- Footer -->
-    <a-footer class="footer">Footer</a-footer>
+    <a-footer class="footer">
+      <contributionGraph></contributionGraph>
+    </a-footer>
   </div>
 </template>
 
 
 <script>
-import appNav from "./app-nav.vue";
-import appMain from "./app-main.vue";
-
-
-export default {
+import appNav from "./org/tranquil/app-nav.vue";
+import appMain from "./org/tranquil/app-main.vue";
+import uerProfile from './org/tranquil/UserProfile.vue'
+import contributionGraph from './org/tranquil/contribution-graph.vue';
+export default({
   name: 'App',
   components: {
     appNav,
-    appMain
+    appMain,
+    contributionGraph,
+    uerProfile
+  },
+  setup() {
+    return {
+      currentComponent: "appMain", // 初始显示的组件
+    }
   }
-}
+
+})
 </script>
 
 

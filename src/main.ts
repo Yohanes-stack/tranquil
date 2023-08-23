@@ -17,9 +17,8 @@ import "~/mock/index.js"
 
 // 引入ant
 import 'ant-design-vue/dist/antd.css';
-
 // 导入组件库
-import * as antIcon from '@ant-design/icons-vue'
+import * as antIcon from '@ant-design/icons-vue';
 
 const app = createApp(App);
 

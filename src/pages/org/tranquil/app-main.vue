@@ -5,7 +5,7 @@
     <a-page-header
         class="demo-page-header"
         style="border: 1px solid rgb(235, 237, 240)"
-        title="学习计划"
+        title="专注"
 
     >
       <a-descriptions size="small" :column="3">
@@ -24,7 +24,7 @@
               <edit-outlined key="edit" />
               <ellipsis-outlined key="ellipsis" />
             </template>
-            <a-card-meta title="Card title" description="This is the description">
+            <a-card-meta title="快速开始" description="快速开始专注统计">
               <template #avatar>
                 <a-avatar src="https://joeschmoe.io/api/v1/random" />
               </template>
