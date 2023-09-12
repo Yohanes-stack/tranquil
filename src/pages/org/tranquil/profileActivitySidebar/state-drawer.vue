@@ -15,8 +15,7 @@
             设置状态
           </a-menu-item>
           <a-divider />
-          <a-menu-item key="2">
-            <UserOutlined />
+          <a-menu-item key="2" @click="redirectUserProfile"><UserOutlined />
             个人资料
           </a-menu-item>
           <a-menu-item key="3">
@@ -33,8 +32,10 @@
 
 <script>
 import { defineComponent, ref, watch } from 'vue';
+import { useRouter } from "vue-router";
 import { Menu } from 'ant-design-vue';
-import stateSelected from "~/pages/org/tranquil/state-selected.vue";
+import stateSelected from "~/pages/org/tranquil/profileActivitySidebar/state-selected.vue";
+
 export default defineComponent({
   components: {
     'a-menu': Menu,
@@ -46,10 +47,18 @@ export default defineComponent({
     showDrawer: Function,
     afterVisibleChange: Function
   },
-  setup() {
+  setup(props, context) {
+    const router = useRouter();
+    const redirectUserProfile = () => {
+      router.push("/userProfile")
+      context.showDrawer()
+    };
+
+
     return{
       name: 'Yohanes',
       theme: 'light', // 切换为 'light' 或 'dark'
+      redirectUserProfile
     }
   }
 

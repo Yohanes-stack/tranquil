@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a-button type="primary" @click="showModal">打开模态对话框</a-button>
+<!--    <a-button type="primary" @click="showModal">打开模态对话框</a-button>-->
     <a-modal v-model:visible="visible" title="模态对话框" @ok="handleOk" @cancel="handleCancel">
       <emoji-picker @emoji="insert" :search="search">
         <div slot="emoji-invoker" slot-scope="{ events: { click: clickEvent } }" @click.stop="clickEvent">
