@@ -1,4 +1,12 @@
 <template>
+
+  <a-tabs v-model:activeKey="activeKey">
+    <a-tab-pane key="1" tab="与我有关">Content of Tab Pane 1</a-tab-pane>
+    <a-tab-pane key="2" tab="后端" force-render>Content of Tab Pane 2</a-tab-pane>
+    <a-tab-pane key="3" tab="前端">Content of Tab Pane 3</a-tab-pane>
+  </a-tabs>
+
+
   <div class="card-list" style="margin-top:15px;">
     <a-card v-for="post in posts" :key="post.id" class="post-card" hoverable>
       <div class="total">
@@ -24,6 +32,10 @@
 </template>
 
 <script>
+
+import { ref } from 'vue';
+const activeKey = ref('1');
+
 export default {
   data() {
     return {
@@ -80,6 +92,7 @@ export default {
   width: 100%;
   height:160px;
   border-radius: 15px;
+
 }
 
 .name-time {
@@ -126,7 +139,7 @@ export default {
   font-size: 12px;
   font-weight: bold;
   border-radius: 20px;
-  background-color: #3d7d3f;
-  color: white;
+  background-color: #f2f2f2;
+  color: #000000;
 }
 </style>
